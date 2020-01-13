@@ -2,13 +2,14 @@
 #include <thread>
 #include <iostream>
 #include <string>
-#include "clibconfig.hpp"
+#include "config.hpp"
 
-int main()
+int main(int argc, const char *argv[])
 {
 
-    Airspace::cLibConfig* config  = new Airspace::cLibConfig();
-    config->init("sample.cfg");
+    Airspace::Config* config  = new Airspace::Config();
+    config->init("sample.cfg", argv, argc);
 
+    
 
 }
