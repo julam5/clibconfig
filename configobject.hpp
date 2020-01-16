@@ -1,19 +1,16 @@
-#ifndef CONFIG_H
-#define CONFIG_H
+#ifndef CONFIGOBJECTS_H
+#define CONFIGOBJECTS_H
 
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
-#include <vector>
-#include <memory>
 #include <libconfig.h++>
-#include <vector>
 
-#include "configobject.hpp"
+
 
 namespace Airspace
 {
-/*
+
 typedef enum
 {
 
@@ -33,17 +30,18 @@ typedef struct
     void *val;
     const char *desc;
 } cfg_entry_t;
-*/
-class Config {
-    private:
-        libconfig::Config cfg;
-        libconfig::Config* pcfg;
 
-        //const libconfig::Setting* setting1;
+class ConfigObject {
+    private:
+        libconfig::Setting* pSetting;
 
     public:
-        Config();
-        ~Config();
+
+        ConfigObject(libconfig::Setting& setting);
+        ~ConfigObject();
+
+        void test1();
+
 
         bool init(std::string path, const char **argv, int argc);
         void cfg_term();
@@ -62,8 +60,9 @@ class Config {
         bool cfg_get_value( std::string key, unsigned int &value);
         bool cfg_get_value( std::string key, float &value);
         bool cfg_get_value( std::string key, std::string &value);
-/*
-        //get value from array from int index
+
+
+        //get value from array
         bool cfg_get_value( std::string key, int index, int &value);
         bool cfg_get_value( std::string key, int index, long long &value);
         bool cfg_get_value( std::string key, int index, double &value);
@@ -72,27 +71,9 @@ class Config {
         bool cfg_get_value( std::string key, int index, unsigned int &value);
         bool cfg_get_value( std::string key, int index, float &value);
         bool cfg_get_value( std::string key, int index, std::string &value);
+        
 
-        //get value from array name index
-        bool cfg_get_value( std::string key, std::string index, int &value);
-        bool cfg_get_value( std::string key, std::string index, long long &value);
-        bool cfg_get_value( std::string key, std::string index, double &value);
-        bool cfg_get_value( std::string key, std::string index, bool &value);
-        bool cfg_get_value( std::string key, std::string index, const char *&value);
-        bool cfg_get_value( std::string key, std::string index, unsigned int &value);
-        bool cfg_get_value( std::string key, std::string index, float &value);
-        bool cfg_get_value( std::string key, std::string index, std::string &value);
-*/
-        bool cfg_get_value( std::string key, std::vector<std::shared_ptr<ConfigObject>> &childSetting);
-/*
-        void determine_setting(std::string key);
-        void test(std::string key);
-        void test1();
-
-        void createConfigObject(std::string key);
-*/
-
-};// Config class
+};// ConfigObject class
 }// namespace Airspace
 
 #endif
