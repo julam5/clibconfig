@@ -17,7 +17,7 @@ bool Config::init(std::string path, const char **argv, int argc)
     try
     {
         cfg.readFile("sample.cfg");
-        pcfg = &cfg;
+        //pcfg = &cfg;
     }
     catch(const libconfig::FileIOException &fioex)
     {
@@ -111,7 +111,7 @@ bool  Config::cfg_get_value(cfg_entry_t *entry)
 
 bool Config::cfg_get_value(std::string key, int &value)
 {
-    bool ok = pcfg->lookupValue(key, value);
+    bool ok = cfg.lookupValue(key, value);
     if (ok)
     {
         std::cout << value << std::endl;
@@ -124,7 +124,7 @@ bool Config::cfg_get_value(std::string key, int &value)
 
 bool Config::cfg_get_value(std::string key, long long &value)
 {
-    bool ok = pcfg->lookupValue(key, value);
+    bool ok = cfg.lookupValue(key, value);
     if (ok)
     {
         std::cout << value << std::endl;
@@ -136,7 +136,7 @@ bool Config::cfg_get_value(std::string key, long long &value)
 
 bool Config::cfg_get_value(std::string key, double &value)
 {
-    bool ok = pcfg->lookupValue(key, value);
+    bool ok = cfg.lookupValue(key, value);
     if (ok)
     {
         std::cout << value << std::endl;
@@ -148,7 +148,7 @@ bool Config::cfg_get_value(std::string key, double &value)
 
 bool Config::cfg_get_value(std::string key, bool &value)
 {
-    bool ok = pcfg->lookupValue(key, value);
+    bool ok = cfg.lookupValue(key, value);
     if (ok)
     {
         std::cout << value << std::endl;
@@ -160,7 +160,7 @@ bool Config::cfg_get_value(std::string key, bool &value)
 
 bool Config::cfg_get_value(std::string key, const char *&value)
 {
-    bool ok = pcfg->lookupValue(key, value);
+    bool ok = cfg.lookupValue(key, value);
     if (ok)
     {
         std::cout << value << std::endl;
@@ -175,7 +175,7 @@ bool Config::cfg_get_value(std::string key, const char *&value, int index)
 {
     bool ok = false;
     try{
-        libconfig::Setting& setting = pcfg->lookup(key);
+        libconfig::Setting& setting = cfg.lookup(key);
         value = setting[index];
         ok = true;
         std::cout << value << std::endl;
@@ -192,7 +192,7 @@ bool Config::cfg_get_value(std::string key, const char *&value, int index)
 
 bool Config::cfg_get_value(std::string key, unsigned int &value)
 {
-    bool ok = pcfg->lookupValue(key, value);
+    bool ok = cfg.lookupValue(key, value);
     if (ok)
     {
         std::cout << value << std::endl;
@@ -205,7 +205,7 @@ bool Config::cfg_get_value(std::string key, unsigned int &value)
 
 bool Config::cfg_get_value(std::string key, float &value)
 {
-    bool ok = pcfg->lookupValue(key, value);
+    bool ok = cfg.lookupValue(key, value);
     if (ok)
     {
         std::cout << value << std::endl;
@@ -218,7 +218,7 @@ bool Config::cfg_get_value(std::string key, float &value)
 
 bool Config::cfg_get_value(std::string key, std::string &value)
 {
-    bool ok = pcfg->lookupValue(key, value);
+    bool ok = cfg.lookupValue(key, value);
     if (ok)
     {
         std::cout << value << std::endl;
@@ -237,7 +237,7 @@ bool Config::cfg_get_value(std::string key, int index, int &value)
 {
     bool ok = false;
     try{
-        libconfig::Setting& setting = pcfg->lookup(key);
+        libconfig::Setting& setting = cfg.lookup(key);
         value = setting[index];
         ok = true;
         std::cout << value << std::endl;
@@ -256,7 +256,7 @@ bool Config::cfg_get_value(std::string key, int index, long long &value)
 {
     bool ok = false;
     try{
-        libconfig::Setting& setting = pcfg->lookup(key);
+        libconfig::Setting& setting = cfg.lookup(key);
         value = setting[index];
         ok = true;
         std::cout << value << std::endl;
@@ -274,7 +274,7 @@ bool Config::cfg_get_value(std::string key, int index, double &value)
 {
     bool ok = false;
     try{
-        libconfig::Setting& setting = pcfg->lookup(key);
+        libconfig::Setting& setting = cfg.lookup(key);
         value = setting[index];
         ok = true;
         std::cout << value << std::endl;
@@ -292,7 +292,7 @@ bool Config::cfg_get_value(std::string key, int index, bool &value)
 {
     bool ok = false;
     try{
-        libconfig::Setting& setting = pcfg->lookup(key);
+        libconfig::Setting& setting = cfg.lookup(key);
         value = setting[index];
         ok = true;
         std::cout << value << std::endl;
@@ -310,7 +310,7 @@ bool Config::cfg_get_value(std::string key, int index, const char *&value)
 {
     bool ok = false;
     try{
-        libconfig::Setting& setting = pcfg->lookup(key);
+        libconfig::Setting& setting = cfg.lookup(key);
         value = setting[index];
         ok = true;
         std::cout << value << std::endl;
@@ -329,7 +329,7 @@ bool Config::cfg_get_value(std::string key, int index, unsigned int &value)
 {
     bool ok = false;
     try{
-        libconfig::Setting& setting = pcfg->lookup(key);
+        libconfig::Setting& setting = cfg.lookup(key);
         value = setting[index];
         ok = true;
         std::cout << value << std::endl;
@@ -348,7 +348,7 @@ bool Config::cfg_get_value(std::string key, int index, float &value)
 {
     bool ok = false;
     try{
-        libconfig::Setting& setting = pcfg->lookup(key);
+        libconfig::Setting& setting = cfg.lookup(key);
         value = setting[index];
         ok = true;
         std::cout << value << std::endl;
@@ -367,7 +367,7 @@ bool Config::cfg_get_value(std::string key, int index, std::string &value)
 {
     bool ok = false;
     try{
-        libconfig::Setting& setting = pcfg->lookup(key);
+        libconfig::Setting& setting = cfg.lookup(key);
         std::string temp = setting[index];
         value = temp;
         ok = true;
@@ -389,7 +389,7 @@ bool Config::cfg_get_value(std::string key, std::string index, int &value)
 {
     bool ok = false;
     try{
-        libconfig::Setting& setting = pcfg->lookup(key);
+        libconfig::Setting& setting = cfg.lookup(key);
         value = setting[index.c_str()];
         ok = true;
         std::cout << value << std::endl;
@@ -408,7 +408,7 @@ bool Config::cfg_get_value(std::string key, std::string index, long long &value)
 {
     bool ok = false;
     try{
-        libconfig::Setting& setting = pcfg->lookup(key);
+        libconfig::Setting& setting = cfg.lookup(key);
         value = setting[index.c_str()];
         ok = true;
         std::cout << value << std::endl;
@@ -426,7 +426,7 @@ bool Config::cfg_get_value(std::string key, std::string index, double &value)
 {
     bool ok = false;
     try{
-        libconfig::Setting& setting = pcfg->lookup(key);
+        libconfig::Setting& setting = cfg.lookup(key);
         value = setting[index.c_str()];
         ok = true;
         std::cout << value << std::endl;
@@ -444,7 +444,7 @@ bool Config::cfg_get_value(std::string key, std::string index, bool &value)
 {
     bool ok = false;
     try{
-        libconfig::Setting& setting = pcfg->lookup(key);
+        libconfig::Setting& setting = cfg.lookup(key);
         value = setting[index.c_str()];
         ok = true;
         std::cout << value << std::endl;
@@ -462,7 +462,7 @@ bool Config::cfg_get_value(std::string key, std::string index, const char *&valu
 {
     bool ok = false;
     try{
-        libconfig::Setting& setting = pcfg->lookup(key);
+        libconfig::Setting& setting = cfg.lookup(key);
         value = setting[index.c_str()];
         ok = true;
         std::cout << value << std::endl;
@@ -481,7 +481,7 @@ bool Config::cfg_get_value(std::string key, std::string index, unsigned int &val
 {
     bool ok = false;
     try{
-        libconfig::Setting& setting = pcfg->lookup(key);
+        libconfig::Setting& setting = cfg.lookup(key);
         value = setting[index.c_str()];
         ok = true;
         std::cout << value << std::endl;
@@ -500,7 +500,7 @@ bool Config::cfg_get_value(std::string key, std::string index, float &value)
 {
     bool ok = false;
     try{
-        libconfig::Setting& setting = pcfg->lookup(key);
+        libconfig::Setting& setting = cfg.lookup(key);
         value = setting[index.c_str()];
         ok = true;
         std::cout << value << std::endl;
@@ -519,7 +519,7 @@ bool Config::cfg_get_value(std::string key, std::string index, std::string &valu
 {
     bool ok = false;
     try{
-        libconfig::Setting& setting = pcfg->lookup(key);
+        libconfig::Setting& setting = cfg.lookup(key);
         std::string temp = setting[index.c_str()];
         value = temp;
         ok = true;
@@ -541,7 +541,7 @@ bool Config::cfg_get_value(std::string key, std::vector<std::shared_ptr<ConfigOb
 {
     bool ok = false;
 
-    libconfig::Setting& settings = pcfg->lookup(key);
+    libconfig::Setting& settings = cfg.lookup(key);
     int count = settings.getLength();
 
     for(int i = 0; i < count; ++i)
@@ -557,14 +557,14 @@ bool Config::cfg_get_value(std::string key, std::vector<std::shared_ptr<ConfigOb
 /*
 void Config::determine_setting(std::string key)
 {
-    const libconfig::Setting& setting = pcfg->lookup(key);
+    const libconfig::Setting& setting = cfg.lookup(key);
     std::cout << "Type: " << setting.getType() << std::endl;
 }
 
 
 void Config::test(std::string key)
 {
-    const libconfig::Setting& setting = pcfg->lookup(key);
+    const libconfig::Setting& setting = cfg.lookup(key);
     setting1 = &setting;
     std::cout << "Type: " << setting1->getType() << std::endl;
     std::string temp = (*setting1)[0];
@@ -581,7 +581,7 @@ void Config::test1()
 
 void Config::createConfigObject(std::string key)
 {
-    libconfig::Setting& setting = pcfg->lookup(key);
+    libconfig::Setting& setting = cfg.lookup(key);
     ConfigObject test = ConfigObject(setting);
     test.test1();
     //std::string temp2;

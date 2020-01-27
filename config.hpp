@@ -37,7 +37,7 @@ typedef struct
 class Config {
     private:
         libconfig::Config cfg;
-        libconfig::Config* pcfg;
+        //libconfig::Config* pcfg;
 
         //const libconfig::Setting* setting1;
 
