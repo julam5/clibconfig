@@ -16,7 +16,8 @@ bool Config::init(std::string path, const char **argv, int argc)
     // Read the file. If there is an error, report it and exit.
     try
     {
-        cfg.readFile("sample.cfg");
+        std::cout << "Reading in: " << path << std::endl;
+        cfg.readFile(path.c_str());
         //pcfg = &cfg;
     }
     catch(const libconfig::FileIOException &fioex)
