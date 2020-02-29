@@ -9,7 +9,7 @@ int main(int argc, const char *argv[])
 {
 
     Airspace::Config* config  = new Airspace::Config();
-    config->init("sample.cfg", argv, argc);
+    config->init("../sample.cfg", argv, argc);
 
     int int_test;
     long long long_test;
