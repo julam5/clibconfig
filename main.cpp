@@ -41,4 +41,20 @@ int main(int argc, const char *argv[])
         columns[i]->cfg_get_value("price", titleString);
     }
     
+
+    //{ title = "Brazil";
+    //  media = "DVD";
+    //  price = 19.99;
+    //  qty = 11; },
+
+    std::string group_string_test1;
+    std::string group_string_test2;
+    float group_float_test;
+    int group_int_test;
+
+    config->cfg_get_value("inventory.movies.[1].title", group_string_test1);
+    config->cfg_get_value("inventory.movies.[1].media", group_string_test2);
+    config->cfg_get_value("inventory.movies.[1].price", group_float_test);
+    config->cfg_get_value("inventory.movies.[1].qty", group_int_test);
+
 }
